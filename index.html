@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chanhee Park — AI Engineer</title>
+<meta name="description" content="AI Engineer — LLM Evaluation, Data, and Agent Systems">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --fg:#16191d; --muted:#5b6470; --rule:#e3e6ea;
+  --accent:#12544F; --accent-soft:rgba(18,84,79,.09); --accent-line:rgba(18,84,79,.22);
+  --chip:#f2f4f7; --card:#fafbfc;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1115; --fg:#e8eaed; --muted:#9aa3ae; --rule:#252a31;
+    --accent:#6BC7BF; --accent-soft:rgba(107,199,191,.13); --accent-line:rgba(107,199,191,.26);
+    --chip:#1a1e24; --card:#14171c;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1115; --fg:#e8eaed; --muted:#9aa3ae; --rule:#252a31;
+  --accent:#6BC7BF; --accent-soft:rgba(107,199,191,.13); --accent-line:rgba(107,199,191,.26);
+  --chip:#1a1e24; --card:#14171c;
+}
+html{
+  font-size:20px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:"Source Sans 3",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:1rem; line-height:1.62; -webkit-font-smoothing:antialiased;
+}
+.wrap{
+  width:min(82%, 1180px); margin:0 auto; padding:64px 0 96px;
+}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+h1{font-size:2.25rem; font-weight:700; letter-spacing:-.02em; margin:0 0 .15em; line-height:1.15}
+h1 .kr{font-size:1.05rem; font-weight:400; color:var(--muted); margin-left:.5em; letter-spacing:0}
+.role{font-size:1.05rem; color:var(--accent); font-weight:600; margin:0 0 .9em}
+.links{font-size:.93rem; color:var(--muted); display:flex; flex-wrap:wrap; gap:.5em 1.1em; margin-bottom:2.2em}
+.lead{font-size:1.12rem; line-height:1.6; border-left:3px solid var(--accent); padding-left:1.1em; margin:0 0 3em}
+.lead strong{font-weight:600}
+h2{
+  color:var(--accent);
+  font-size:.8rem; font-weight:700; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--fg); margin:3em 0 1.2em; padding-bottom:.5em; border-bottom:1.5px solid var(--accent-line);
+}
+h3{font-size:1.05rem; font-weight:600; margin:0 0 .25em}
+.item{margin-bottom:2em}
+.meta{font-size:.88rem; color:var(--muted); margin:0 0 .55em}
+.item p{margin:0 0 .6em}
+.card{background:var(--card); border:1px solid var(--rule); border-radius:8px; padding:1.2em 1.4em; margin-bottom:1.4em}
+.card h3{margin-bottom:.35em}
+.num{font-weight:600; color:var(--fg)}
+ul{margin:.4em 0 0; padding-left:1.15em}
+li{margin-bottom:.3em}
+.pub{margin-bottom:1.8em; font-size:1rem; display:flex; gap:1.4em; align-items:flex-start}
+.pub .fig{
+  width:340px; flex:0 0 340px; border:1px solid var(--rule); border-radius:6px;
+  background:var(--card); margin-top:.2em; padding:6px; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+.pub .fig img{max-width:100%; max-height:300px; width:auto; height:auto; display:block}
+.pub .txt{flex:1; min-width:0}
+@media (max-width:560px){
+  .pub{gap:.85em}
+  .pub .fig{width:150px; flex:0 0 150px}
+}
+.pub .t{font-weight:600; line-height:1.42; padding:.1em 0 .3em}
+.pub .t a{color:var(--fg)}
+.pub .t a:hover{color:var(--accent)}
+.pub .a{color:var(--muted); font-size:.95rem; padding-bottom:.15em}
+.pub .v{font-style:italic}
+.pub .tag{
+  display:inline-block; font-size:.75rem; font-style:normal; padding:.1em .55em;
+  background:var(--chip); border-radius:4px; color:var(--muted); margin-left:.4em; vertical-align:1px;
+}
+.me{font-weight:700; color:var(--fg)}
+.grid{display:grid; grid-template-columns:auto 1fr; gap:.45em 1.4em; font-size:.97rem}
+.grid dt{font-weight:600; color:var(--muted)}
+.grid dd{margin:0}
+.row{display:flex; justify-content:space-between; align-items:baseline; gap:1em; flex-wrap:wrap}
+.row .when{font-size:.88rem; color:var(--muted); white-space:nowrap}
+footer{margin-top:4em; padding-top:1.5em; border-top:1px solid var(--rule); font-size:.88rem; color:var(--muted)}
+@media (max-width:720px){
+  .wrap{width:auto; padding:40px 18px 64px}
+  nav.jump{margin-left:-18px; margin-right:-18px; padding-left:18px; padding-right:18px}
+}
+@media (max-width:560px){
+  h1{font-size:1.85rem}
+  .grid{grid-template-columns:1fr; gap:.1em 0}
+  .grid dt{margin-top:.6em}
+}
+nav.jump{
+  position:sticky; top:0; z-index:10; background:var(--bg);
+  border-bottom:1px solid var(--rule); margin:0 0 2.4em; padding:.7em 0;
+  display:flex; gap:1.3em; flex-wrap:wrap; font-size:.87rem;
+  backdrop-filter:saturate(180%) blur(8px);
+}
+nav.jump a{color:var(--muted); font-weight:600; letter-spacing:.02em}
+nav.jump a:hover{color:var(--accent); text-decoration:none}
+h2{scroll-margin-top:4em}
+@media (max-width:560px){ nav.jump{margin:0 -18px 1.8em; padding:.6em 18px; gap:1em} }
+.head{display:flex; gap:1.9em; align-items:flex-start; margin-bottom:2.2em}
+.head img{
+  width:170px; height:170px; border-radius:50%; object-fit:cover;
+  border:1px solid var(--rule); flex-shrink:0; margin-top:.35em;
+}
+.head .who{flex:1; min-width:0}
+.head h1{margin-bottom:.1em}
+.head .role{margin-bottom:.7em}
+.head .links{margin-bottom:0}
+@media (max-width:560px){
+  .head{gap:1.1em}
+  .head img{width:110px; height:110px}
+}
+.more{font-size:.83rem; color:var(--accent); white-space:nowrap; margin-left:.35em}
+.back{font-size:.9rem; margin:0 0 1.8em}
+.ptitle{font-size:2rem; margin:0 0 .3em; letter-spacing:-.02em}
+.deep{margin-bottom:3.2em; scroll-margin-top:2em}
+.dtitle{
+  font-size:1.3rem; font-weight:700; letter-spacing:-.01em; text-transform:none;
+  border-bottom:none; margin:0 0 .3em; padding:0; color:var(--fg);
+}
+.deep .meta{margin-bottom:1em}
+.deep p{margin:0 0 .85em}
+.subhead{
+  font-size:.78rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--muted); margin:1.6em 0 .9em;
+}
+.subhead:first-of-type{margin-top:0}
+.tags{margin-top:.5em; display:flex; flex-wrap:wrap; gap:.4em}
+.tags span{
+  font-size:.76rem; line-height:1.5; padding:.12em .6em; border-radius:999px;
+  background:var(--accent-soft); color:var(--accent); white-space:nowrap;
+}
+@media (max-width:560px){ .tags span{font-size:.72rem} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="head">
+  <img src="photo.jpg" alt="Chanhee Park">
+  <div class="who">
+    <h1>Chanhee Park<span class="kr">박찬희</span></h1>
+    <p class="role">AI Engineer — LLM Evaluation, Data, and Agent Systems</p>
+    <div class="links"><span>Seoul, Republic of Korea</span><a href="mailto:pch7678@korea.ac.kr">pch7678@korea.ac.kr</a><a href="https://github.com/JohnnyNLP">GitHub</a><a href="https://scholar.google.com/citations?user=MjCe3RAAAAAJ">Google Scholar</a><a href="https://www.linkedin.com/in/chanhee-park-nlp">LinkedIn</a><a href="chanhee-park-resume.pdf">Résumé (PDF)</a></div>
+  </div>
+</div>
+<p class="lead"><strong>How do you reliably deploy an LLM into a domain where being wrong is expensive?</strong> This is the core question throughout my research, which focused on evaluation, domain-specialized modeling, retrieval-augmented generation and agent serving. Building a live legal service, I realized that <strong>what a model's technical report tells you is not what its users experience.</strong> Closing that gap starts with being able to say <em>where</em> a model fails, not just how often.</p>
+<nav class="jump"><a href="#publications">Publications</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#technical">Technical</a><a href="chanhee-park-resume.pdf">Résumé&nbsp;PDF</a></nav>
+<h2 id="publications">Publications</h2>
+<h3 class="subhead">Conference &amp; journal</h3>
+<div class="pub"><div class="fig"><img src="figures/JCO.jpg" alt="" loading="lazy"></div><div class="txt"><div class="t"><a href="https://ascopubs.org/doi/full/10.1200/CCI-25-00361">Can Small Open-Source Language Models With Retrieval-Augmented Generation Match GPT-4 Performance in Breast Cancer Clinical Decision Support?</a></div><div class="a"><span class="me">Chanhee Park</span>, In Hae Park, Minhyuk Kim, Youngjoon Jang, Heuiseok Lim, Yuna Hur</div><div><span class="v">JCO Clinical Cancer Informatics, 2026</span></div><div class="tags"><span>Clinical Decision Support</span><span>Retrieval-Augmented Generation</span><span>Domain Adaptation</span></div></div></div>
+<div class="pub"><div class="fig"><img src="figures/MIRAGE.jpg" alt="" loading="lazy"></div><div class="txt"><div class="t"><a href="https://aclanthology.org/2025.findings-naacl.157/">MIRAGE: A Metric-Intensive Benchmark for Retrieval-Augmented Generation Evaluation</a></div><div class="a"><span class="me">Chanhee Park</span>, Hyeonseok Moon, Heuiseok Lim</div><div><span class="v">Findings of NAACL 2025</span></div><div class="tags"><span>Retrieval-Augmented Generation</span><span>Evaluation</span><span>Benchmark</span></div></div></div>
+<div class="pub"><div class="fig"><img src="figures/PPFT.jpg" alt="" loading="lazy"></div><div class="txt"><div class="t"><a href="https://aclanthology.org/2026.acl-long.1191/">Towards Privacy-Preserving Large Language Model: Text-free Inference Through Alignment and Adaptation</a></div><div class="a">Jeongho Yoon, <span class="me">Chanhee Park</span>, Yongchan Chun, Hyeonseok Moon, Heuiseok Lim</div><div><span class="v">ACL 2026</span></div><div class="tags"><span>Text-free Inference</span><span>Privacy-preserving LLM</span><span>AI Security</span></div></div></div>
+<div class="pub"><div class="fig"><img src="figures/ETN.jpg" alt="" loading="lazy"></div><div class="txt"><div class="t"><a href="https://arxiv.org/abs/2604.08627">Evidential Transformation Network: Turning Pretrained Models into Evidential Models for Post-hoc Uncertainty Estimation</a></div><div class="a">Yongchan Chun, <span class="me">Chanhee Park</span>, Jeongho Yoon, Jaehyung Seo, Heuiseok Lim</div><div><span class="v">CVPR 2026</span></div><div class="tags"><span>Uncertainty Estimation</span><span>Evidential Deep Learning</span><span>Post-hoc Calibration</span></div></div></div>
+<div class="pub"><div class="fig"><img src="figures/ZENA.jpg" alt="" loading="lazy"></div><div class="txt"><div class="t"><a href="https://ieeexplore.ieee.org/abstract/document/11454669/">ZENA: Enhanced Anomaly-Based IDS for Smart Homes Automation through Multilayer Artificial Neural Network</a></div><div class="a">Nkuba Kayembe Carlos, <span class="me">Chanhee Park</span>, Imatitikua Aiyanyo, Heejo Lee, Heuiseok Lim</div><div><span class="v">Journal of Communications and Networks, 2026</span></div><div class="tags"><span>Internet of Things</span><span>Anomaly Detection</span><span>Smart-home Security</span></div></div></div>
+<div class="pub"><div class="fig"><img src="figures/LEGALMIDM.jpg" alt="" loading="lazy"></div><div class="txt"><div class="t"><a href="https://arxiv.org/abs/2604.25297">LegalMidm: Use-Case-Driven Legal Domain Specialization for Korean Large Language Model</a></div><div class="a">Youngjoon Jang, <span class="me">Chanhee Park</span>, Hyeonseok Moon, Young-kyoung Ham, Jiwon Moon, Jinhyeon Kim, JuKyung Jung, Heuiseok Lim</div><div><span class="v">DATA-FM Workshop @ ICLR 2026</span></div><div class="tags"><span>Domain Adaptation</span><span>Continual Pretraining</span><span>Legal LLM</span></div></div></div>
+<h3 class="subhead">Under review, preprints &amp; reports</h3>
+<div class="pub"><div class="fig"><img src="figures/AGENTHOP.jpg" alt="" loading="lazy"></div><div class="txt"><div class="t">AgentHop: A Diagnostic Benchmark for Agentic Multi-Hop Scientific Question Answering</div><div class="a"><span class="me">Chanhee Park</span>, Jeongho Yoon, Sungbin Han, Hyeonseok Moon, Heuiseok Lim</div><div><span class="v">NeurIPS 2026 Evaluations &amp; Datasets</span><span class="tag">under review</span></div><div class="tags"><span>Agent</span><span>Evaluation</span><span>Benchmark</span></div></div></div>
+<div class="pub"><div class="fig"><img src="figures/FOT.jpg" alt="" loading="lazy"></div><div class="txt"><div class="t"><a href="https://arxiv.org/abs/2608.15065">Funnel of Thoughts: Efficient Test-Time Scaling via Early Voting and Rollout Pruning</a></div><div class="a"><span class="me">Chanhee Park</span>, Sungbin Han, Jeongho Yoon, Seongtae Hong, Heuiseok Lim</div><div><span class="v">AACL-IJCNLP 2026</span><span class="tag">under review</span></div><div class="tags"><span>Test-time Scaling</span><span>Reasoning Optimization</span><span>Large Reasoning Models</span></div></div></div>
+<div class="pub"><div class="fig"><img src="figures/SCHEMAPRISM.jpg" alt="" loading="lazy"></div><div class="txt"><div class="t">SchemaPrism: A Diagnostic Benchmark for Profiling LLMs' Schema Linking Capability in Text-to-SQL</div><div class="a">Myunghoon Kang, Junyoung Son, <span class="me">Chanhee Park</span>, Enamul Hoque Prince, Heuiseok Lim</div><div><span class="v">AAAI 2026</span><span class="tag">under review</span></div><div class="tags"><span>Schema Linking</span><span>Evaluation</span><span>Benchmark</span></div></div></div>
+<div class="pub"><div class="fig"><img src="figures/VAETKI.jpg" alt="" loading="lazy"></div><div class="txt"><div class="t"><a href="https://github.com/wbl-ncai/VAETKI/blob/releases/v1.0.0/VAETKI_Technical_Report.pdf">VAETKI Technical Report — a 100B-parameter Korean MoE foundation model</a></div><div class="a">NC-AI Consortium (data team contributor)</div><div><span class="v"><a href="https://github.com/wbl-ncai/VAETKI/blob/releases/v1.0.0/VAETKI_Technical_Report.pdf">Technical report, 2026</a></span></div><div class="tags"><span>Mixture-of-experts</span><span>Sovereign AI</span><span>Data Curation</span></div></div></div>
+<div class="pub"><div class="fig"><img src="figures/KITE.jpg" alt="" loading="lazy"></div><div class="txt"><div class="t"><a href="https://arxiv.org/abs/2510.15558">KITE: A Benchmark for Evaluating Korean Instruction-Following Abilities in Large Language Models</a></div><div class="a">Dongjun Kim, <span class="me">Chanhee Park</span>, Heuiseok Lim</div><div><span class="v">arXiv preprint, 2025</span></div><div class="tags"><span>Instruction Following</span><span>Korean benchmark</span><span>Evaluation</span></div></div></div>
+<div class="pub"><div class="fig"><img src="figures/KOMIRAGE.jpg" alt="" loading="lazy"></div><div class="txt"><div class="t"><a href="https://koreascience.kr/article/CFKO202533539627626.page">Ko-MIRAGE: A Diagnostic Benchmark for Korean Retrieval-Augmented Generation</a></div><div class="a"><span class="me">Chanhee Park</span>, Yuna Hur, Heuiseok Lim</div><div><span class="v">HCLT 2025</span></div><div class="tags"><span>Retrieval-Augmented Generation</span><span>Benchmark</span><span>Evaluation</span></div></div></div>
+<div class="pub"><div class="fig"><img src="figures/DOWA.jpg" alt="" loading="lazy"></div><div class="txt"><div class="t"><a href="https://koreascience.kr/article/CFKO202404272001889.page">DOWA: Document-Augmented Word Assessment through Dual-Labeling Approach</a></div><div class="a"><span class="me">Chanhee Park</span>, Chanjun Park, Aiyanyo Imatitikua Dainelles, Heuiseok Lim</div><div><span class="v">HCLT 2024</span></div><div class="tags"><span>Retrieval-Augmented Generation</span><span>Evaluation</span><span>Document Augmentation</span></div></div></div>
+<div class="pub"><div class="fig"><img src="figures/DBRAG.jpg" alt="" loading="lazy"></div><div class="txt"><div class="t"><a href="https://koreascience.kr/article/CFKO202533861229980.page">Database Retrieval-Augmented Generation Framework Leveraging Large Reasoning Language Models and Schema Linking Methods</a></div><div class="a">Myunghoon Kang, Junyoung Son, <span class="me">Chanhee Park</span>, Aram So, Heuiseok Lim</div><div><span class="v">HCLT 2025</span></div><div class="tags"><span>Text-to-SQL</span><span>Schema Linking</span><span>Reasoning Models</span></div></div></div>
+<h2 id="patents">Patents</h2>
+<p><strong>Device and Method for Evaluating Retrieval-Augmented Generation Systems</strong> (MIRAGE) — patent application filed, Republic of Korea, Dec 2025.<br> <strong>Method and Apparatus for Accelerating Multi-Sample Inference of Large Reasoning Model</strong> (Funnel of Thoughts) — patent application filed, Republic of Korea, Aug 2026.</p>
+<h2 id="projects">Funded Projects</h2>
+<div class="item">
+<div class="row"><h3>Sovereign AI Foundation Model · NC AI</h3><span class="when">Sep – Dec 2025</span></div>
+  <p>Built, sanitized and quality-filtered over <span class="num">6.5M Q/A samples</span> for VAETKI-100B-A10B, a Mixture-of-Experts foundation model.</p>
+</div>
+<div class="item">
+<div class="row"><h3>Korean Writing &amp; Grammar Assistant · KOCCA &amp; NIKL</h3><span class="when">Aug 2026 – present</span></div>
+  <p>Designed the core evaluation metrics used to officially certify the agent across four tasks — proofreading feedback and scoring diagnostics among them — for the National Institute of Korean Language's Comprehensive Korean Language Consultation Service.</p>
+</div>
+<div class="item">
+<div class="row"><h3>LegalMi:dm · KT</h3><span class="when">Jul 2024 – Jul 2025</span></div>
+  <p>Led Legal-domain continual pretraining on Mi:dm-2.0-Base (11.5B) with DeepSpeed multi-node training; data curation and training monitoring. The resulting model was central to KT's successful bid in a <strong>Supreme Court of Korea</strong> consortium.</p>
+</div>
+<div class="item">
+<div class="row"><h3>Clinical RAG for Breast Cancer Decision Support · Korea University</h3><span class="when">May – Dec 2024</span></div>
+  <p>Led end-to-end as principal researcher: 1,356 ASCO guideline documents and 98 queries from practicing clinicians, with FAISS and SentenceTransformers retrieval. Explored how medical LLMs, instruction-tuned LLMs, and proprietary LLMs perform in a retrieval-augmented generation setting, and how they compare to GPT-4.</p>
+</div>
+<h2 id="experience">Experience</h2>
+<div class="item">
+<div class="row"><h3>Tech Lead, AI Engineer (freelance) · <a href="https://loumpartner.com">LOUM Partner</a></h3><span class="when">Oct 2025 – present</span></div>
+  <p class="meta">LLM platform for HR and labor-law workflows, led by a practicing labor attorney. Four-person team, Seoul.</p>
+  <p>Owned the agent layer. A single-orchestrator design collapsed under prompt overload — tool inventory, intent classification, IRAC synthesis over 50+ retrieved documents, and multi-turn state in one context — so I split it into <strong>Planner / Executor / Composer</strong>, sizing each stage to its own failure mode. Response time fell from <span class="num">over 2.5 minutes to 20 seconds</span>.</p>
+  <p>Built retrieval over 10 public Korean legal databases (<span class="num">127K document chunks</span>) and a five-dimension LLM-as-a-judge harness over <span class="num">1,000+</span> practitioner-sourced queries, with ablation A/B and model-migration gates. <span class="num">1.1K users</span> through closed beta.</p>
+</div>
+<div class="item">
+<div class="row"><h3>Research Intern → Graduate Research Assistant · NLP&amp;AI Lab, Korea University</h3><span class="when">Feb 2024 – present</span></div>
+  <p class="meta">Advised by Prof. Heuiseok Lim.</p>
+</div>
+<div class="item">
+<div class="row"><h3>Interpreting Officer (First Lieutenant) · Republic of Korea Air Force</h3><span class="when">Mar 2020 – Jun 2023</span></div>
+  <p class="meta">Lead interpreter for defense procurement negotiations with Boeing, BAE Systems, and Lockheed Martin, including quadrilateral ROKAF–USAF–DAPA talks at Boeing St. Louis. ROK–US Combined Exercises; Black Eagles airshow tour across four countries.</p>
+</div>
+<h2 id="technical">Technical</h2>
+<dl class="grid">
+  <dt>LLM serving</dt><dd>vLLM, SGLang, Amazon SageMaker, sentence-transformers</dd>
+  <dt>Training</dt><dd>PyTorch, Hugging Face Transformers/Trainer, DeepSpeed, TRL, Ray, WanDB</dd>
+  <dt>Agent &amp; RAG</dt><dd>FastAPI, SSE streaming, LangChain/LangGraph/LangSmith, multi-provider APIs (Gemini, Claude, OpenAI, Together, DeepSeek), FAISS, MongoDB</dd>
+  <dt>Data &amp; evaluation</dt><dd>lm-evaluation-harness, evalchemy, FactScore, MTEB</dd>
+  <dt>Infrastructure</dt><dd>Python, AWS (EC2, S3, Lambda, CloudWatch), Docker, MongoDB, TailScale</dd>
+  <dt>Languages</dt><dd>Korean (native) · English (professional, TOEIC 980) · German (professional, TestDaF 4/5/4/5)</dd>
+</dl>
+<h2 id="education">Education</h2>
+<div class="item">
+<div class="row"><h3>M.S., Computer Science and Engineering · Korea University</h3><span class="when">Feb 2025 – Feb 2027 (expected)</span></div>
+  <p class="meta">NLP&amp;AI Lab. Agent evaluation, efficient inference, domain adaptation.</p>
+</div>
+<div class="item">
+<div class="row"><h3>B.A., Korean Language and Literature · Korea University</h3><span class="when">Mar 2014 – Feb 2020</span></div>
+  <p class="meta">Second major, German Literature. Exchange student, University of Bonn, Germany (2017–18).</p>
+</div>
+<footer>Last updated September 2026 · <a href="chanhee-park-resume.pdf">Download résumé (PDF)</a></footer>
+</div>
+</body>
+</html>
