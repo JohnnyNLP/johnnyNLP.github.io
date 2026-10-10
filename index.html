@@ -67,7 +67,7 @@ h1 .kr{font-size:1.05rem; font-weight:400; color:var(--muted); margin-left:.5em;
 h2{
   color:var(--accent);
   font-size:.8rem; font-weight:700; letter-spacing:.11em; text-transform:uppercase;
-  color:var(--fg); margin:3em 0 1.2em; padding-bottom:.5em; border-bottom:1.5px solid var(--accent-line);
+  color:var(--fg); margin:3em 0 1.2em; padding-bottom:.5em; border-bottom:2px solid var(--accent);
 }
 h3{font-size:1.05rem; font-weight:600; margin:0 0 .25em}
 .item{margin-bottom:2em}
@@ -117,7 +117,9 @@ li{margin-bottom:.3em}
 .grid dd{margin:0}
 .row{display:flex; justify-content:space-between; align-items:baseline; gap:1em; flex-wrap:wrap}
 .row .when{font-size:.88rem; color:var(--muted); white-space:nowrap}
-footer{margin-top:4em; padding-top:1.5em; border-top:1px solid var(--rule); font-size:.88rem; color:var(--muted)}
+footer{margin-top:4em; padding-top:1.5em; border-top:2px solid var(--accent); font-size:.88rem; color:var(--muted)}
+.strip{height:10px; background:var(--accent); width:100%}
+.strip.bottom{margin-top:2.2em}
 @media (max-width:720px){
   .wrap{width:auto; padding:40px 18px 64px}
   nav.jump{margin-left:-18px; margin-right:-18px; padding-left:18px; padding-right:18px}
@@ -129,7 +131,7 @@ footer{margin-top:4em; padding-top:1.5em; border-top:1px solid var(--rule); font
 }
 nav.jump{
   position:sticky; top:0; z-index:10; background:var(--bg);
-  border-bottom:1px solid var(--rule); margin:0 0 2.4em; padding:.7em 0;
+  border-bottom:2px solid var(--accent); margin:0 0 2.4em; padding:.7em 0;
   display:flex; gap:1.3em; flex-wrap:wrap; font-size:.87rem;
   backdrop-filter:saturate(180%) blur(8px);
 }
@@ -174,17 +176,18 @@ h2{scroll-margin-top:4em}
 </style>
 </head>
 <body>
+<div class="strip" aria-hidden="true"></div>
 <div class="wrap">
 <div class="head">
   <img src="photo.jpg" alt="Chanhee Park">
   <div class="who">
     <h1>Chanhee Park<span class="kr">박찬희</span></h1>
     <p class="role">AI Engineer — LLM Evaluation, Data, and Agent Systems</p>
-    <div class="links"><span>Seoul, Republic of Korea</span><a href="mailto:pch7678@korea.ac.kr">pch7678@korea.ac.kr</a><a href="https://github.com/JohnnyNLP">GitHub</a><a href="https://scholar.google.com/citations?user=MjCe3RAAAAAJ">Google Scholar</a><a href="https://www.linkedin.com/in/chanhee-park-nlp">LinkedIn</a><a href="chanhee-park-resume.pdf">Résumé (PDF)</a></div>
+    <div class="links"><span>Seoul, Republic of Korea</span><a href="mailto:pch7678@korea.ac.kr">pch7678@korea.ac.kr</a><a href="https://github.com/JohnnyNLP">GitHub</a><a href="https://scholar.google.com/citations?user=MjCe3RAAAAAJ">Google Scholar</a><a href="https://www.linkedin.com/in/chanhee-park-nlp">LinkedIn</a><a href="chanhee-park-resume.pdf">Résumé (PDF)</a><a href="portfolio.html">Portfolio</a></div>
   </div>
 </div>
 <p class="lead"><strong>How do you reliably deploy an LLM into a domain where being wrong is expensive?</strong> This is the core question throughout my research, which focused on evaluation, domain-specialized modeling, retrieval-augmented generation and agent serving. Building a live legal service, I realized that <strong>what a model's technical report tells you is not what its users experience.</strong> Closing that gap starts with being able to say <em>where</em> a model fails, not just how often.</p>
-<nav class="jump"><a href="#publications">Publications</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#technical">Technical</a><a href="chanhee-park-resume.pdf">Résumé&nbsp;PDF</a></nav>
+<nav class="jump"><a href="#publications">Publications</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#technical">Technical</a><a href="chanhee-park-resume.pdf">Résumé&nbsp;PDF</a><a href="portfolio.html">Portfolio</a></nav>
 <h2 id="publications">Publications</h2>
 <h3 class="subhead">Conference &amp; journal</h3>
 <div class="pub"><div class="fig"><img src="figures/AGENTHOP.jpg" alt="" loading="lazy"></div><div class="txt"><div class="t"><a href="https://arxiv.org/abs/2609.34428">AgentHop: A Diagnostic Benchmark for Agentic Multi-Hop Scientific Question Answering</a></div><div class="a"><span class="me">Chanhee Park</span>, Jeongho Yoon, Sungbin Han, Hyeonseok Moon, Heuiseok Lim</div><div><span class="v">NeurIPS 2026 Evaluations &amp; Datasets Track</span><span class="kind">Conference</span><span class="first">1st author</span></div><div class="tags"><span>Agent</span><span>Evaluation</span><span>Benchmark</span></div></div></div>
@@ -252,9 +255,10 @@ h2{scroll-margin-top:4em}
 </div>
 <div class="item">
 <div class="row"><h3>B.A., Korean Language and Literature · Korea University</h3><span class="when">Mar 2014 – Feb 2020</span></div>
-  <p class="meta">Second major, German Literature. Exchange student, University of Bonn, Germany (2017–18).</p>
+  <p class="meta">Second major, German Literature. Exchange student, University of Bonn, Germany (Aug 2017 – Jul 2018).</p>
 </div>
-<footer>Last updated September 2026 · <a href="chanhee-park-resume.pdf">Download résumé (PDF)</a></footer>
+<footer><a href="chanhee-park-resume.pdf">Download résumé (PDF)</a> · <a href="portfolio.html">Portfolio</a></footer>
 </div>
+<div class="strip bottom" aria-hidden="true"></div>
 </body>
 </html>
